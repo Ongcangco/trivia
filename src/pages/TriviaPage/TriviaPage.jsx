@@ -6,21 +6,39 @@ import Axios from 'axios';
 const API_URL = "https://opentdb.com/api.php?amount=10&category=16&difficulty=easy&type=multiple";
 
 export default function TriviaPage() {
-  const [question, setQuestion] = useState("");
+  const [questions, setQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [score, setScore] = useState(0);
+
+
   useEffect(() => {
     Axios.get(API_URL)
       .then(res => res.data)
       .then(data => {
-        setQuestion(data.results)
-      })
-  }, []);
+        const questions = data.results.map((question) => ({
+          ...question,
+          answers:[question.correct_answer, ...question.incorrect_answers].sort(() => Math.random())
+        }))
 
-  return ( question.length > 0 ? (
+        setQuestions(questions)
+      });
+  }, [])
+
+  const handleAnswer = (answer) => {
+    if(answer === questions[currentIndex].correct_answer) {
+      setScore(score+1);
+    }
+    setCurrentIndex(currentIndex + 1);
+  }
+
+
+
+  return ( questions.length > 0 ? (
     <div className='container'>
-      <Questions data={question[currentIndex]} />
+      <Questions handleAnswer={handleAnswer}
+      data={questions[currentIndex]} />
     </div>
-    
+
   ) : 'loading..'
   
   );
