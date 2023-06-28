@@ -1,24 +1,28 @@
 import { useEffect, useState } from 'react';
 import './TriviaPage.css';
 import Questions from '../Questions/Questions';
-import { Axios } from 'axios';
+import Axios from 'axios';
 
 const API_URL = "https://opentdb.com/api.php?amount=10&category=16&difficulty=easy&type=multiple";
 
 export default function TriviaPage() {
-  const [trivia, setTrivia] = useState("");
+  const [question, setQuestion] = useState("");
+  const [currentIndex, setCurrentIndex] = useState(0);
   useEffect(() => {
-    Axios.length(API_URL)
+    Axios.get(API_URL)
       .then(res => res.data)
       .then(data => {
-        setTrivia(data.results)
+        setQuestion(data.results)
       })
   }, []);
 
-  return (
+  return ( question.length > 0 ? (
     <div className='container'>
-      <Questions data={trivia} />
+      <Questions data={question[currentIndex]} />
     </div>
+    
+  ) : 'loading..'
+  
   );
 }
 
@@ -29,14 +33,3 @@ export default function TriviaPage() {
 
 
 
-  
-//   fetch("https://opentdb.com/api.php?amount=10&encode=url3986")
-//       .then((res) => res.json())
-//       .then((data) => {
-//         console.log(data);
-//       })
-  
-//   return (
-
-//   );
-// }

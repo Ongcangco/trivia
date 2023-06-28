@@ -19,7 +19,7 @@
 
 .main-button {
     column-count: 2;
-    column-gap: 300px;
+    column-gap: 100px;
     padding: 50px 400px;
     justify-content: center;
     align-items: center;
