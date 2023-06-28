@@ -10,7 +10,9 @@ export default function NavBar({ user, setUser }) {
   return (
     <div>
       <nav>
-        <Link to="/">Trivia</Link>
+        <Link to="/">Home</Link>
+        &nbsp; | &nbsp;
+        <Link to="/Trivia">Trivia</Link>
         &nbsp; | &nbsp;
         <Link to="/scores">My Score</Link>
         &nbsp;&nbsp;

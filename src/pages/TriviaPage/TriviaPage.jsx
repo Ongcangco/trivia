@@ -25,7 +25,7 @@ export default function TriviaPage() {
   }, [])
 
   const handleAnswer = (answer) => {
-    if(answer === questions[currentIndex].correct_answer) {
+    if(answer === questions.correct_answer) {
       setScore(score+1);
     }
     setCurrentIndex(currentIndex + 1);
@@ -35,8 +35,10 @@ export default function TriviaPage() {
 
   return ( questions.length > 0 ? (
     <div className='container'>
-      <Questions handleAnswer={handleAnswer}
-      data={questions[currentIndex]} />
+      {currentIndex >= questions.length ? (
+      <h1>You Scored {score} </h1>):
+     (<Questions handleAnswer={handleAnswer}
+      data={questions[currentIndex]} />)}
     </div>
 
   ) : 'loading..'
