@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './TriviaPage.css';
 import Questions from '../Questions/Questions';
 import Axios from 'axios';
+import App from '../App/App';
 
 const API_URL = "https://opentdb.com/api.php?amount=10&category=16&difficulty=easy&type=multiple";
 
@@ -48,6 +49,13 @@ export default function TriviaPage() {
   
   );
 }
+
+// const score = {
+//   score: {score},
+  
+// };
+// console.log(score)
+
 
 
 
