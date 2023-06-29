@@ -1,17 +1,20 @@
-import React from "react";
-
-export default function Questions({handleAnswer, data:{question, correct_answer, incorrect_answers, answer} }) {
+export default function Questions({handleAnswer, question }) {
+  function handleClick(evt) {
+    if(evt.target.localName === 'button') {
+      handleAnswer(evt.target.innerText, question.correct_answer)
+    }
+  }
     return (
        <>
         <div className='question'>
-          <h1 dangerouslySetInnerHTML={{__html:question}}/>
+          <h1 dangerouslySetInnerHTML={{__html:question.question}}/>
         </div>
-        <div className='main-button' onClick={() => handleAnswer(answer)}>
+        <div className='main-button' onClick={handleClick}>
         
-          <button className='choice-button'>{correct_answer}</button>
-          <button className='choice-button'>{incorrect_answers[0]}</button>
-          <button className='choice-button'>{incorrect_answers[1]}</button>
-          <button className='choice-button'>{incorrect_answers[2]}</button>
+          <button className='choice-button'>{question.correct_answer}</button>
+          <button className='choice-button'>{question.incorrect_answers[0]}</button>
+          <button className='choice-button'>{question.incorrect_answers[1]}</button>
+          <button className='choice-button'>{question.incorrect_answers[2]}</button>
           
           
         </div>

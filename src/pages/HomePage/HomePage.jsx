@@ -1,10 +1,9 @@
 import { useState } from 'react';
-import React from "react";
 import { redirect } from 'react-router-dom';
 
 
 export default function HomePage() {
-    const [trivia, setTrivia] = React.useState(false);
+    const [trivia, setTrivia] = useState(false);
     const [category, setCategory] = useState("");
     const [difficulty, setDifficulty] = useState("");
     const [error, setError] = useState(false);
@@ -19,9 +18,7 @@ export default function HomePage() {
         setTrivia=redirect('/trivia');
     };
 }
-
-   
-    
+ 
     return(
         <div className="settings">
             <span>Trivia Settings</span>
