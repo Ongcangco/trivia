@@ -15,14 +15,17 @@ export default function TriviaPage() {
     Axios.get(API_URL)
       .then(res => res.data)
       .then(data => {
-        const questions = data.results.map((question) => ({
-          ...question,
-          answers:[question.correct_answer, ...question.incorrect_answers].sort(() => Math.random())
-        }))
+        const updatedQuestions = data.results.map(question => {
+          const randomizedAnswers = [...question.incorrect_answers, question.correct_answer].sort(() => Math.random() - 0.5);
+          return {
+            ...question,
+            answers: randomizedAnswers,
+          };
+        });
 
-        setQuestions(questions)
+        setQuestions(updatedQuestions);
       });
-  }, [])
+  }, []);
 
   const handleAnswer = (answer) => {
     if(answer === questions.correct_answer) {

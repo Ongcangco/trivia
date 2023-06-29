@@ -4,7 +4,7 @@ export default function Questions({handleAnswer, data:{question, correct_answer,
     return (
        <>
         <div className='question'>
-          <h1>{question}</h1>
+          <h1 dangerouslySetInnerHTML={{__html:question}}/>
         </div>
         <div className='main-button' onClick={() => handleAnswer(answer)}>
         

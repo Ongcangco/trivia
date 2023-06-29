@@ -12,7 +12,7 @@ export default function NavBar({ user, setUser }) {
       <nav>
         <Link to="/">Home</Link>
         &nbsp; | &nbsp;
-        <Link to="/Trivia">Trivia</Link>
+        <Link to="/Trivia">Trivia temporary</Link>
         &nbsp; | &nbsp;
         <Link to="/scores">My Score</Link>
         &nbsp;&nbsp;

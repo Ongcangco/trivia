@@ -1,13 +1,27 @@
-// import { useState } from 'react';
+import { useState } from 'react';
 import React from "react";
-import { Navigate } from "react-router-dom"
+import { redirect } from 'react-router-dom';
+
 
 export default function HomePage() {
     const [trivia, setTrivia] = React.useState(false);
+    const [category, setCategory] = useState("");
+    const [difficulty, setDifficulty] = useState("");
+    const [error, setError] = useState(false);
+    
 
-    if (trivia) {
-        return <Navigate to="/trivia"/>
-    }
+    const handleSubmit = () => {
+    if (!category || !difficulty) {
+        setError(true);
+    return;
+    } else {
+        setError(false);
+        setTrivia=redirect('/trivia');
+    };
+}
+
+   
+    
     return(
         <div className="settings">
             <span>Trivia Settings</span>
@@ -17,7 +31,7 @@ export default function HomePage() {
                         <option>Easy</option>
                         <option>Medium</option>
                         <option>Hard</option>
-                        <option>You Don't Have to be Like This</option>
+                        <option>Show-Off Status</option>
                     </select>
                     <br/>
                 <span>Category</span> 
