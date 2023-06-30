@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './TriviaPage.css';
 import Questions from '../Questions/Questions';
 import Axios from 'axios';
-import App from '../App/App';
+
 
 const API_URL = "https://opentdb.com/api.php?amount=10&category=16&difficulty=easy&type=multiple";
 
@@ -31,30 +31,30 @@ export default function TriviaPage() {
   const handleAnswer = (userAnswer, correctAnswer ) => {
     if(userAnswer === correctAnswer) {
       setScore(score+1);
+      console.log(setScore)
     }
     setCurrentIndex(currentIndex + 1);
   }
 
-
-
   return ( questions.length > 0 ? (
     <div className='container'>
+      
       {currentIndex >= questions.length ? (
-      <h1>You Scored {score} </h1>):
+      <h1>You Scored {score} <br></br><button>See My Scores</button> </h1>
+      
+      ):
      (<Questions handleAnswer={handleAnswer}
       question={questions[currentIndex]} />)}
+      
     </div>
+    
 
   ) : 'loading..'
   
   );
 }
 
-// const score = {
-//   score: {score},
-  
-// };
-// console.log(score)
+
 
 
 

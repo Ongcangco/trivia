@@ -1,13 +1,27 @@
 import Questions from "../Questions/Questions";
+import { history } from 'react-router-dom';
+
 
 export default function HomePage({
   category,
   questionCategory,
   handleCategoryChange,
   handleQuestions,
+  currentIndex,
+  questions,
+  score,
+  handleAnswer,
   
 }) {
-  return (
+// const history = history();
+// const handleRedirect = () => {
+//     history.push('/trivia');
+// }
+
+
+
+
+return (
     <>
       <h2>Select Category:</h2>
       <select value={questionCategory} onChange={handleCategoryChange}>
@@ -20,7 +34,20 @@ export default function HomePage({
           ))}
       </select>
       <button onClick={handleQuestions}>Start Quiz</button>
-     
+      {questions.length > 0 ? (
+        <div className="container">
+          {currentIndex >= questions.length ? (
+            <h1>You Scored {score} </h1>
+          ) : (
+            <Questions
+              handleAnswer={handleAnswer}
+              questions={questions[currentIndex]}
+            />
+          )}
+        </div>
+      ) : (
+        "loading.."
+      )}
     </>
   );
 }
