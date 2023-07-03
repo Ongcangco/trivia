@@ -47,14 +47,14 @@ export default function TriviaPage() {
     <div>
       <NavBar />
       <HomePage
-        // category={categoryList}
-        // questionCategory={questionCategory}
-        // handleCategoryChange={handleCategoryChange}
-        // handleQuestions={handleQuestions}
-        // currentIndex={currentIndex}
-        // questions={questions}
-        // score={score}
-        // handleAnswer={handleAnswer}
+        category={categoryList}
+        questionCategory={questionCategory}
+        handleCategoryChange={handleCategoryChange}
+        handleQuestions={handleQuestions}
+        currentIndex={currentIndex}
+        questions={questions}
+        score={score}
+        handleAnswer={handleAnswer}
       />
     </div>
   );

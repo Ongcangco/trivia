@@ -16,6 +16,10 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: true
+  },
+  highScore: {
+    type: Number,
+    default: 0
   }
 }, {
   timestamps: true,

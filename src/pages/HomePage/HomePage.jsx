@@ -1,5 +1,8 @@
 import Questions from "../Questions/Questions";
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import * as usersAPI from '../../utilities/users-api';
+
 
 
 export default function HomePage({
@@ -14,6 +17,17 @@ export default function HomePage({
   
 }) {
 const navigate = useNavigate();
+
+useEffect (function() {
+async function saveScore() {
+  // if (score) {
+    const scoreObject = {score:score}
+    await usersAPI.saveScore(scoreObject)
+
+  // }
+}
+saveScore()
+}, [score])
 
 
 return (

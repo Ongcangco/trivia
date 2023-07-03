@@ -1,33 +1,19 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function ScorePage({ user }) {
   const [scores, setScores] = useState([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchScores = async () => {
-      try {
-        const response = await fetch('https://api.example.com/scores');
-        const data = await response.json();
-        setScores(data.scores);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchScores();
-  }, []);
-
   const handleStartQuiz = () => {
     // Navigate to the home page to start the quiz
     navigate('/');
   };
 
-  const handleSeeScores = () => {
-    // Navigate to the scores page to view all scores
-    navigate('/scores');
-  };
+  // const handleSeeScores = () => {
+  //   // Navigate to the scores page to view all scores
+  //   navigate('/scores');
+  // };
 
   return (
     <div>
@@ -54,7 +40,7 @@ export default function ScorePage({ user }) {
         </div>
       )}
       <button onClick={handleStartQuiz}>Start New Quiz</button>
-      <button onClick={handleSeeScores}>See All Scores</button>
+      {/* <button onClick={handleSeeScores}>See All Scores</button> */}
     </div>
   );
 }
