@@ -17,8 +17,8 @@ const navigate = useNavigate();
 
 
 return (
-    <>
-      <h2>Select Category:</h2>
+  <>
+    <h2>Select Category:</h2>
       <select value={questionCategory} onChange={handleCategoryChange}>
         <option>All</option>
         {category &&
@@ -44,7 +44,7 @@ return (
          question={questions[currentIndex]}
        />
      )}
-   </div>
+    </div>
  ) : (
    "Loading..."
  )}

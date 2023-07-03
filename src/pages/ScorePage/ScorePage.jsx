@@ -53,7 +53,7 @@ export default function ScorePage({ user }) {
           <h2>Your Score: {user.score}</h2>
         </div>
       )}
-      <button onClick={handleStartQuiz}>Start Quiz</button>
+      <button onClick={handleStartQuiz}>Start New Quiz</button>
       <button onClick={handleSeeScores}>See All Scores</button>
     </div>
   );
