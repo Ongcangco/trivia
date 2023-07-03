@@ -26,39 +26,49 @@ export default function App() {
     .then((response) => {
       setCategory(response.trivia_categories);
     });
-}, [setCategory]);
+}, []);
 
+const handleCategoryChange = (event) => {
+  setQuestionCategory(event.target.value);
+};
 
-  const handleCategoryChange = (event) => {
-    setQuestionCategory(event.target.value);
-  };
+const handleQuestions = async () => {
+  let API_URL = `https://opentdb.com/api.php?amount=${questionAmount}`;
 
+  if (questionCategory.length) {
+    API_URL = API_URL.concat(`&category=${questionCategory}`);
+  }
 
-  const handleQuestions = async () => {
-    let API_URL = `https://opentdb.com/api.php?amount=${questionAmount}`;
-   
-    if (questionCategory.length) {
-      API_URL = API_URL.concat(`&category=${questionCategory}`);
-    }
-    await fetch(API_URL)
-      .then((res) => res.json())
-      .then((res) => {
-        setQuestions(res.results);
-        console.log(questions);
+  await fetch(API_URL)
+    .then((res) => res.json())
+    .then((res) => {
+      const updatedQuestions = res.results.map((question) => {
+        const randomizedAnswers = [
+          ...question.incorrect_answers,
+          question.correct_answer
+        ].sort(() => Math.random() - 0.5);
+        return {
+          ...question,
+          answers: randomizedAnswers
+        };
       });
-  };
+      setQuestions(updatedQuestions);
+      setCurrentIndex(0);
+      setScore(0);
+    });
+};
 
-  const handleAnswer = (userAnswer, correctAnswer) => {
-    if (userAnswer === correctAnswer) {
-      setScore(score + 1);
-    }
-    setCurrentIndex(currentIndex + 1);
-  };
+const handleAnswer = (userAnswer, correctAnswer) => {
+  if (userAnswer === correctAnswer) {
+    setScore((prevScore) => prevScore + 1);
+  }
+  setCurrentIndex((prevIndex) => prevIndex + 1);
+};
 
-  return (
-    <main className="App">
-       { user ?
-     <>
+return (
+  <main className="App">
+    {user ? (
+      <>
         <NavBar user={user} setUser={setUser} />
         <Routes>
           <Route
@@ -66,25 +76,25 @@ export default function App() {
             element={
               <HomePage
                 category={category}
-                setCategory={setCategory}
                 questionCategory={questionCategory}
-                setQuestionCategory={setQuestionCategory}
                 handleCategoryChange={handleCategoryChange}
                 handleQuestions={handleQuestions}
                 questions={questions}
+                currentIndex={currentIndex}
+                score={score}
+                handleAnswer={handleAnswer}
               />
             }
           />
-          <Route path="/Trivia" element={<TriviaPage  />} />
+          <Route path="/Trivia" element={<TriviaPage />} />
           <Route path="/scores" element={<ScorePage />} />
         </Routes>
-        </>
-          :
-        <AuthPage setUser={setUser} />
-        }
-      </main>
-    );
-  }
-            
+      </>
+    ) : (
+      <AuthPage setUser={setUser} />
+    )}
+  </main>
+);
+}
 
 

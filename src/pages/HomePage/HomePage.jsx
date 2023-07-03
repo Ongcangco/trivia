@@ -1,5 +1,5 @@
 import Questions from "../Questions/Questions";
-import { history } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function HomePage({
@@ -13,12 +13,7 @@ export default function HomePage({
   handleAnswer,
   
 }) {
-// const history = history();
-// const handleRedirect = () => {
-//     history.push('/trivia');
-// }
-
-
+const navigate = useNavigate();
 
 
 return (
@@ -35,65 +30,24 @@ return (
       </select>
       <button onClick={handleQuestions}>Start Quiz</button>
       {questions.length > 0 ? (
-        <div className="container">
-          {currentIndex >= questions.length ? (
-            <h1>You Scored {score} </h1>
-          ) : (
-            <Questions
-              handleAnswer={handleAnswer}
-              questions={questions[currentIndex]}
-            />
-          )}
-        </div>
-      ) : (
-        "loading.."
-      )}
-    </>
-  );
+     <div className="container">
+     {currentIndex >= questions.length ? (
+       <>
+         <h1>You Scored {score}</h1>
+         <button onClick={() => navigate('/scores')}>
+           See My Scores
+         </button>
+       </>
+     ) : (
+       <Questions
+         handleAnswer={handleAnswer}
+         question={questions[currentIndex]}
+       />
+     )}
+   </div>
+ ) : (
+   "Loading..."
+ )}
+</>
+);
 }
-
-// import { useState } from 'react';
-// import { redirect } from 'react-router-dom';
-
-
-// export default function HomePage() {
-//     const [trivia, setTrivia] = useState(false);
-//     const [category, setCategory] = useState("");
-//     const [difficulty, setDifficulty] = useState("");
-//     const [error, setError] = useState(false);
-    
-
-//     const handleSubmit = () => {
-//     if (!category || !difficulty) {
-//         setError(true);
-//     return;
-//     } else {
-//         setError(false);
-        
-//     };
-// }
- 
-//     return(
-//         <div className="settings">
-//             <span>Trivia Settings</span>
-//             <div className="select">
-//                 <span>Difficulty</span>
-//                     <select>
-//                         <option>Easy</option>
-//                         <option>Medium</option>
-//                         <option>Hard</option>
-//                         <option>Show-Off Status</option>
-//                     </select>
-//                     <br/>
-//                 <span>Category</span> 
-//                     <select>
-//                         <option>Board Games</option>
-//                         <option>Geography</option>
-//                         <option>Computers</option>
-//                         <option>Food</option>
-//                     </select> 
-//             </div>
-//                 <button className="begin-button" onClick={() => {setTrivia(true)}}>Begin</button>
-//         </div>
-//     )
-// }

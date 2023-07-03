@@ -1,58 +1,76 @@
-import { useEffect, useState } from 'react';
-import './TriviaPage.css';
-import Questions from '../Questions/Questions';
-import Axios from 'axios';
-
-
-const API_URL = "https://opentdb.com/api.php?amount=10&category=16&difficulty=easy&type=multiple";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import HomePage from "../HomePage/HomePage";
+import NavBar from "../../components/NavBar/NavBar";
 
 export default function TriviaPage() {
+  const { category } = useParams();
+  const [questionCategory, setQuestionCategory] = useState("");
+  const [categoryList, setCategoryList] = useState([]);
   const [questions, setQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
 
-
   useEffect(() => {
-    Axios.get(API_URL)
-      .then(res => res.data)
-      .then(data => {
-        const updatedQuestions = data.results.map(question => {
-          const randomizedAnswers = [...question.incorrect_answers, question.correct_answer].sort(() => Math.random() - 0.5);
-          return {
-            ...question,
-            answers: randomizedAnswers,
-          };
-        });
-
-        setQuestions(updatedQuestions);
-      });
+    fetch("https://opentdb.com/api_category.php")
+      .then((res) => res.json())
+      .then((data) => setCategoryList(data.trivia_categories));
   }, []);
 
-  const handleAnswer = (userAnswer, correctAnswer ) => {
-    if(userAnswer === correctAnswer) {
-      setScore(score+1);
-      console.log(setScore)
+  const handleCategoryChange = (e) => {
+    setQuestionCategory(e.target.value);
+  };
+
+  const handleQuestions = () => {
+    if (questionCategory !== "") {
+      fetch(
+        `https://opentdb.com/api.php?amount=10&category=${questionCategory}&type=multiple`
+      )
+        .then((res) => res.json())
+        .then((data) => setQuestions(data.results))
+        .catch((error) => console.log(error));
+    } else {
+      alert("Please select a category");
     }
-    setCurrentIndex(currentIndex + 1);
-  }
+  };
 
-  return ( questions.length > 0 ? (
-    <div className='container'>
-      
-      {currentIndex >= questions.length ? (
-      <h1>You Scored {score} <br></br><button>See My Scores</button> </h1>
-      
-      ):
-     (<Questions handleAnswer={handleAnswer}
-      question={questions[currentIndex]} />)}
-      
+  const handleAnswer = (answer) => {
+    const newIndex = currentIndex + 1;
+    setCurrentIndex(newIndex);
+
+    if (answer === questions[currentIndex].correct_answer) {
+      setScore(score + 1);
+    }
+  };
+
+  return (
+    <div>
+      <NavBar />
+      <HomePage
+        category={categoryList}
+        questionCategory={questionCategory}
+        handleCategoryChange={handleCategoryChange}
+        handleQuestions={handleQuestions}
+        currentIndex={currentIndex}
+        questions={questions}
+        score={score}
+        handleAnswer={handleAnswer}
+      />
     </div>
-    
-
-  ) : 'loading..'
-  
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
