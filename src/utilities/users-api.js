@@ -14,5 +14,8 @@ export async function checkToken() {
 }
 
 export async function saveScore(score) {
-  return sendRequest(`${BASE_URL}/scores`, 'GET', score);
+  return sendRequest(`${BASE_URL}/score`, 'PUT', score);
+}
+export async function getAllScores() {
+  return sendRequest(`${BASE_URL}/score/index`);
 }

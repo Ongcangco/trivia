@@ -10,9 +10,11 @@ router.post('/', usersCtrl.create);
 // POST /api/users/login
 router.post('/login', usersCtrl.login);
 
-router.get('/scores', usersCtrl.scores);
+router.put('/score', usersCtrl.updateHighScore);
 
 // GET /api/users/check-token
 router.get('/check-token', ensureLoggedIn, usersCtrl.checkToken);
+
+router.get('/score/index', ensureLoggedIn, usersCtrl.getScores);
 
 module.exports = router;

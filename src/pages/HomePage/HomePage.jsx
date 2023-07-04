@@ -5,6 +5,7 @@ import * as usersAPI from '../../utilities/users-api';
 
 
 
+
 export default function HomePage({
   category,
   questionCategory,
@@ -14,20 +15,24 @@ export default function HomePage({
   questions,
   score,
   handleAnswer,
-  
+  user 
 }) {
 const navigate = useNavigate();
 
-useEffect (function() {
-async function saveScore() {
-  // if (score) {
-    const scoreObject = {score:score}
-    await usersAPI.saveScore(scoreObject)
 
-  // }
-}
-saveScore()
-}, [score])
+
+useEffect (function() {
+  console.log(currentIndex, questions.length, user.highScore, score)
+  if (currentIndex === questions.length && user.highScore < score ) {
+    console.log('if fire')
+    async function saveScore() {
+        const scoreObject = {score:score}
+        const updatedUser = await usersAPI.saveScore(scoreObject)
+        
+    }
+    saveScore()
+  }
+}, [currentIndex])
 
 
 return (

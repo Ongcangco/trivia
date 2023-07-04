@@ -83,11 +83,12 @@ return (
                 currentIndex={currentIndex}
                 score={score}
                 handleAnswer={handleAnswer}
+                user={user}
               />
             }
           />
           <Route path="/Trivia" element={<TriviaPage />} />
-          <Route path="/scores" element={<ScorePage />} />
+          <Route path="/scores" element={<ScorePage score={score} />} />
         </Routes>
       </>
     ) : (

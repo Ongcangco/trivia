@@ -1,12 +1,14 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const User = require('../../models/user');
+const user = require('../../models/user');
 
 module.exports = {
   create,
   login,
   checkToken,
-  scores
+  updateHighScore,
+  getScores,
 };
 
 function checkToken(req, res) {
@@ -38,10 +40,27 @@ async function login(req, res) {
   }
 }
 
-async function scores(req, res) {
-  console.log(req.body.score)
+async function updateHighScore(req, res) {
+  const user = await User.findById(req.user._id)
+  if (req.body.score > user.highScore) {
+    const updatedUser = await User.findByIdAndUpdate (
+      req.user._id, {highScore: req.body.score}
+    );
+    res.json(updatedUser)
+  }
+  }
 
+
+async function getScores(req, res) {
+  const users = await User.find({})
+  console.log(users)
+  const scores = users.map((user) => 
+    user.highScore
+  )
+  res.json(scores)
 }
+
+
 
 /*--- Helper Functions --*/
 

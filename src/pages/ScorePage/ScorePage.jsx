@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import * as usersAPI from '../../utilities/users-api'
 
-export default function ScorePage({ user }) {
+export default function ScorePage({ score }) {
   const [scores, setScores] = useState([]);
   const navigate = useNavigate();
 
@@ -9,6 +10,17 @@ export default function ScorePage({ user }) {
     // Navigate to the home page to start the quiz
     navigate('/');
   };
+
+  useEffect (function() {
+    async function getScores() {
+      const allScores = await usersAPI.getAllScores()
+      console.log(allScores)
+      setScores(allScores)  
+      console.log(scores) 
+
+    }
+    getScores()
+  }, [])
 
   // const handleSeeScores = () => {
   //   // Navigate to the scores page to view all scores
@@ -26,19 +38,14 @@ export default function ScorePage({ user }) {
           </tr>
         </thead>
         <tbody>
-          {scores.map((score, index) => (
-            <tr key={index}>
-              <td>{score.name}</td>
-              <td>{score.score}</td>
-            </tr>
+          {scores.map((score) => (
+            <tr><td>Name</td><td>{score}</td></tr>
           ))}
         </tbody>
       </table>
-      {user && (
-        <div>
-          <h2>Your Score: {user.score}</h2>
-        </div>
-      )}
+      <div>
+    </div>
+      
       <button onClick={handleStartQuiz}>Start New Quiz</button>
       {/* <button onClick={handleSeeScores}>See All Scores</button> */}
     </div>
