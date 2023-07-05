@@ -5,7 +5,8 @@ An interractive app that uses a Trivia API to allow users to take a quiz of vari
 
 
 Technology:<br>
--HTML, CSS, JS, React, Express, Node, MongoDB
+-HTML, CSS, JS, React, Express, Node, MongoDB <br>
+Database: OpenTriviaDB
 
 Visual:
 <br>
