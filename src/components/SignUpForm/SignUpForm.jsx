@@ -30,7 +30,7 @@ export default class SignUpForm extends Component {
     } catch {
       // An error occurred
       // Probably due to a duplicate email
-      this.setState({ error: 'Sign Up Failed - Try Again' });
+      this.setState({ error: 'Signup failed, please try again!' });
     }
   };
 
@@ -38,20 +38,19 @@ export default class SignUpForm extends Component {
     const disable = this.state.password !== this.state.confirm;
     return (
       <div>
-        <div className="form-container">
-          <form autoComplete="off" onSubmit={this.handleSubmit}>
-            <label>Name</label>
-            <input type="text" name="name" value={this.state.name} onChange={this.handleChange} required />
-            <label>Email</label>
-            <input type="email" name="email" value={this.state.email} onChange={this.handleChange} required />
-            <label>Password</label>
-            <input type="password" name="password" value={this.state.password} onChange={this.handleChange} required />
-            <label>Confirm</label>
-            <input type="password" name="confirm" value={this.state.confirm} onChange={this.handleChange} required />
-            <button type="submit" disabled={disable}>SIGN UP</button>
-          </form>
-        </div>
-        <p className="error-message">&nbsp;{this.state.error}</p>
+        <form className='sform sSignUpForm' autoComplete="off" onSubmit={this.handleSubmit}>
+          <h3>Create new account</h3>
+          <label className='slabel' for="name">Name</label>
+          <input className='sinput' type="text" placeholder="Enter name" id="name" name="name" value={this.state.name} onChange={this.handleChange} required />
+          <label className='slabel' for="email">Email</label>
+          <input className='sinput' type="email" placeholder="Enter email" id="email" name="email" value={this.state.email} onChange={this.handleChange} required />
+          <label className='slabel' for="password">Password</label>
+          <input className='sinput' type="password" placeholder="Enter password" id="password" name="password" value={this.state.password} onChange={this.handleChange} required />
+          <label className='slabel' for="confirm">Confirm Password</label>
+          <input className='sinput' type="password" placeholder="Enter confirm password" id="confirm" name="confirm" value={this.state.confirm} onChange={this.handleChange} required />
+          <button className='sbutton' type="submit" disabled={disable}>Signup</button>
+        </form>
+        <span className="floating-alert">{this.state.error}</span>
       </div>
     );
   }

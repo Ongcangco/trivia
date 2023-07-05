@@ -2,8 +2,7 @@ import Questions from "../Questions/Questions";
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import * as usersAPI from '../../utilities/users-api';
-
-
+import './HomePage.css';
 
 
 export default function HomePage({
@@ -19,16 +18,12 @@ export default function HomePage({
 }) {
 const navigate = useNavigate();
 
-
-
 useEffect (function() {
   console.log(currentIndex, questions.length, user.highScore, score)
   if (currentIndex === questions.length && user.highScore < score ) {
-    console.log('if fire')
     async function saveScore() {
         const scoreObject = {score:score}
-        const updatedUser = await usersAPI.saveScore(scoreObject)
-        
+        const updatedUser = await usersAPI.saveScore(scoreObject)      
     }
     saveScore()
   }
@@ -38,22 +33,26 @@ useEffect (function() {
 return (
   <>
     <h2>Select Category:</h2>
-      <select value={questionCategory} onChange={handleCategoryChange}>
+    <div class="home-container">
+      <select class="sdropdown" value={questionCategory} onChange={handleCategoryChange}>
         <option>All</option>
-        {category &&
-          category.map((q) => (
+
+          {category && category.map((q) => (
             <option value={q.id} key={q.id}>
               {q.name}
             </option>
           ))}
-      </select>
-      <button onClick={handleQuestions}>Start Quiz</button>
+      </select>   
+      <button class="sbutton" onClick={handleQuestions}>Start Quiz</button>
+
+    </div>
+    
       {questions.length > 0 ? (
-     <div className="container">
+     <div className="scoreContainer">
      {currentIndex >= questions.length ? (
        <>
          <h1>You Scored {score}</h1>
-         <button onClick={() => navigate('/scores')}>
+         <button className="scoreButton" onClick={() => navigate('/scores')}>
            See My Scores
          </button>
        </>
@@ -65,7 +64,7 @@ return (
      )}
     </div>
  ) : (
-   "Loading..."
+   "."
  )}
 </>
 );

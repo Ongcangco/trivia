@@ -2,8 +2,7 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    
 }
 
 .question {
@@ -15,23 +14,24 @@
     min-width: 400px;
     max-width: 900px;
     text-align: center;
+    border: 1px solid #615954;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
 }
 
-.main-button {
+
+  .choice-button {
     column-count: 2;
-    column-gap: 100px;
-    padding: 50px 400px;
-    justify-content: center;
-    align-items: center;
-    justify-content: center;
-}
-
-.choice-button {
     background-color:lightseagreen;
     height: 50px;
     width: 250px;
     padding: 8px;
     margin: 24px;
     font-weight: bolder;
-    font-size: larger;
+    font-size: medium;
+    border: 1px solid black;
+
 }

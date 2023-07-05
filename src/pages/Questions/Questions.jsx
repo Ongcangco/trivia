@@ -1,3 +1,6 @@
+import './Questions.css';
+
+
 export default function Questions({handleAnswer, question }) {
   function handleClick(evt) {
     if(evt.target.localName === 'button') {
@@ -9,7 +12,7 @@ export default function Questions({handleAnswer, question }) {
       <div className="question">
         <h1 dangerouslySetInnerHTML={{ __html: question.question }} />
       </div>
-      <div className="main-button" onClick={handleClick}>
+      <div className="main-button" onClick={handleClick} >
         <button className="choice-button">{question.correct_answer}</button>
         <button className="choice-button">
           {question.incorrect_answers[0]}
@@ -24,4 +27,3 @@ export default function Questions({handleAnswer, question }) {
     </>
   );
 }
-

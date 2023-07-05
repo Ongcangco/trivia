@@ -1,0 +1,34 @@
+
+.snavbar {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    background-color: #FFF8F0;
+    color: #615954;
+    font-size: 18px;
+    padding: 10px;
+    border: 2px solid #F67F00;
+    }
+    
+    .snavbar-right {
+    display: flex;
+    align-items: center;
+    }
+    
+    .snavbar-link {
+    margin-right: 10px;
+    color: #615954;
+    text-decoration: none;
+    }
+    
+    .snavbar-link:hover {
+    color: #F67F00;
+    font-weight: bold;
+    }
+    
+    .swelcome {
+    text-align: center;
+    padding: 20px;
+    font-weight: bold;
+    font-size: 24px;
+    }

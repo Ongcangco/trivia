@@ -1,153 +1,131 @@
-/* CSS Custom Properties */
-:root {
-  --white: #FFFFFF;
-  --tan-1: #FBF9F6;
-  --tan-2: #E7E2DD;
-  --tan-3: #E2D9D1;
-  --tan-4: #D3C1AE;
-  --orange: #F67F00;
-  --text-light: #968c84;
-  --text-dark: #615954;
-}
-
-*, *:before, *:after {
+*, *:before, *:after{
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: var(--tan-4);
-  padding: 2vmin;
-  height: 100vh;
+body{
+background-color: #FFEFE5;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.sform{
+width: 400px;
+background-color: #FFF8F0;
+position: absolute;
+transform: translate(-50%,-50%);
+top: 50%;
+left: 50%;
+border-radius: 10px;
+backdrop-filter: blur(10px);
+border: 2px solid rgba(255,255,255,0.1);
+box-shadow: 0 0 40px rgba(8,7,16,0.6);
+padding: 35px 35px;
+text-align: left;
 }
 
-#root {
-  height: 100%;
+.sSignUpForm {
+width: 600px !important;
 }
 
-.align-ctr {
-  text-align: center;
+.sform *{
+font-family: 'Poppins',sans-serif;
+color: #968c84;
+letter-spacing: 0.5px;
+outline: none;
+border: none;
 }
 
-.align-rt {
-  text-align: right;
+.sform h1, p {
+color: #615954;
 }
 
-.smaller {
-  font-size: smaller;
+.sform h3{
+font-size: 32px;
+font-weight: 500;
+line-height: 42px;
+text-align: center;
 }
 
-.flex-ctr-ctr {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.slabel{
+display: block;
+margin-top: 20px;
+font-size: 16px;
+font-weight: 500;
 }
 
-.flex-col {
-  flex-direction: column;
+.sinput{
+display: block;
+height: 40px;
+width: 100%;
+background-color: rgba(255,255,255,0.07);
+border-color: #615954;
+border-width: 2px;
+border-style: solid;
+border-radius: 3px;
+padding: 0 10px;
+margin-top: 8px;
+font-size: 14px;
+font-weight: 300;
 }
 
-.flex-j-end {
-  justify-content: flex-end;
+.sform ::placeholder{
+color: #FFB74D;
 }
 
-.scroll-y {
-  overflow-y: scroll;
+.sbutton{
+margin-top: 50px;
+width: 100%;
+background-color: #F67F00;
+color: #FFFFFF;
+padding: 15px 0;
+font-size: 18px;
+font-weight: 600;
+border-radius: 5px;
+cursor: pointer;
 }
 
-.section-heading {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background-color: var(--tan-1);
-  color: var(--text-dark);
-  border: .1vmin solid var(--tan-3);
-  border-radius: 1vmin;
-  padding: .6vmin;
-  text-align: center;
-  font-size: 2vmin;
+.floating-alert {
+position: fixed;
+top: 20px;
+right: 20px;
+/* background-color: #FF6600; */
+color: #FF6600;
+font-weight: bold;
+font-size: 18px;
+padding: 10px 20px;
+border-radius: 4px;
 }
 
-.form-container {
-  padding: 3vmin;
-  background-color: var(--tan-1);
-  border: .1vmin solid var(--tan-3);
-  border-radius: 1vmin;
+.authButton {
+border: none;
+background: none;
+padding: 0;
+font: inherit;
+color: inherit;
+cursor: pointer;
+text-decoration: underline;
+color: #F67F00;
+font-size: 18px;
+font-weight: 600;
+border-radius: 5px;
+cursor: pointer;
 }
 
-p.error-message {
-  color: var(--orange);
-  text-align: center;
+.sbutton:disabled {
+opacity: 0.5;
+cursor: not-allowed;
 }
 
-form {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  gap: 1.25vmin;
-  color: var(--text-light);
+.authLabel {
+color: #968c84 !important;
+text-decoration: none;
+font-size: 18px;
+font-weight: 600;
 }
 
-label {
-  font-size: 2vmin;
-  display: flex;
-  align-items: center;
+.authContainer {
+width: 100%;
+position: fixed;
+bottom: 20px;
 }
 
-input {
-  padding: 1vmin;
-  font-size: 2vmin;
-  border: .1vmin solid var(--tan-3);
-  border-radius: .5vmin;
-  color: var(--text-dark);
-  background-image: none !important; /* prevent lastpass */
-  outline: none;
-}
-
-input:focus {
-  border-color: var(--orange);
-}
-
-button, a.button {
-  margin: 1vmin;
-  padding: 1vmin;
-  color: var(--white);
-  background-color: var(--orange);
-  font-size: 2vmin;
-  font-weight: bold;
-  text-decoration: none;
-  text-align: center;
-  border: .1vmin solid var(--tan-2);
-  border-radius: .5vmin;
-  outline: none;
-  cursor: pointer;
-}
-
-button.btn-sm {
-  font-size: 1.5vmin;
-  padding: .6vmin .8vmin;
-}
-
-button.btn-xs {
-  font-size: 1vmin;
-  padding: .4vmin .5vmin;
-}
-
-button:disabled, form:invalid button[type="submit"] {
-  cursor: not-allowed;
-  background-color: var(--tan-4);
-}
-
-button[type="submit"] {
-  grid-column: span 2;
-  margin: 1vmin 0 0;
-}

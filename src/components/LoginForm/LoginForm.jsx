@@ -23,22 +23,21 @@ export default function LoginForm({ setUser }) {
       const user = await usersService.login(credentials);
       setUser(user);
     } catch {
-      setError('Log In Failed - Try Again');
+      setError('Login failed, please try again!');
     }
   }
 
   return (
     <div>
-      <div className="form-container">
-        <form autoComplete="off" onSubmit={handleSubmit}>
-          <label>Email</label>
-          <input type="text" name="email" value={credentials.email} onChange={handleChange} required />
-          <label>Password</label>
-          <input type="password" name="password" value={credentials.password} onChange={handleChange} required />
-          <button type="submit">LOG IN</button>
-        </form>
-      </div>
-      <p className="error-message">&nbsp;{error}</p>
+      <form className='sform' autoComplete="off" onSubmit={handleSubmit}>
+          <h3>Login To Trivia</h3>
+          <label className='slabel' for="email">Email</label>
+          <input className='sinput' type="email" placeholder="Enter email" id="email" name="email" value={credentials.email} onChange={handleChange} required />
+          <label className='slabel' for="password">Password</label>
+          <input className='sinput' type="password" placeholder="Enter password" id="password" name="password" value={credentials.password} onChange={handleChange} required />
+          <button className='sbutton' type="submit">Login</button>
+      </form>
+      <span className="floating-alert">{error}</span>
     </div>
   );
 }

@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as usersAPI from '../../utilities/users-api'
+import './ScorePage.css';
+
 
 export default function ScorePage({ score }) {
   const [scores, setScores] = useState([]);
@@ -22,13 +24,9 @@ export default function ScorePage({ score }) {
     getScores()
   }, [])
 
-  // const handleSeeScores = () => {
-  //   // Navigate to the scores page to view all scores
-  //   navigate('/scores');
-  // };
 
   return (
-    <div>
+    <div class="scoreBoard">
       <h1>ScoreBoard</h1>
       <table>
         <thead>
@@ -39,14 +37,14 @@ export default function ScorePage({ score }) {
         </thead>
         <tbody>
           {scores.map((score) => (
-            <tr><td>Name</td><td>{score}</td></tr>
+            <tr><td>Trish</td><td>{score}</td></tr>
           ))}
         </tbody>
       </table>
       <div>
     </div>
       
-      <button onClick={handleStartQuiz}>Start New Quiz</button>
+      <button class="sbutton" onClick={handleStartQuiz}>Start New Quiz</button>
       {/* <button onClick={handleSeeScores}>See All Scores</button> */}
     </div>
   );
