@@ -1,4 +1,4 @@
-#Trivia:
+##Trivia:
 <br>
 An interractive app that uses a Trivia API to allow users to take a quiz of various category. Here you are able to test your skill in many different categories and enjoy the competitiveness of others, as well as trying to beat your own given score. Users are able to play as many games as they want, and try to get the best possible score.
 
