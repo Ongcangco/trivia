@@ -7,8 +7,11 @@ Technology:
 -HTML, CSS, JS, React, Express, 
 
 Visual:
+<br>
 <img src="https://github.com/Ongcangco/trivia/assets/129900118/0efff140-6d9e-4de7-9a17-0e9cca2c6cbd" height="100">
+<br>
 <img src="https://github.com/Ongcangco/trivia/assets/129900118/fb3b51dd-5930-4709-b101-7fe69b48b82c" height="100">
+<br>
 <img src="https://github.com/Ongcangco/trivia/assets/129900118/ec9f14ca-28da-4e82-9de2-60fefc807073" height="100">
 
 Getting Started:
