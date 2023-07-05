@@ -45,7 +45,6 @@ export default function ScorePage({ score }) {
     </div>
       
       <button class="sbutton" onClick={handleStartQuiz}>Start New Quiz</button>
-      {/* <button onClick={handleSeeScores}>See All Scores</button> */}
     </div>
   );
 }

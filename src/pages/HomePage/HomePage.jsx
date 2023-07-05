@@ -1,6 +1,6 @@
 import Questions from "../Questions/Questions";
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import * as usersAPI from '../../utilities/users-api';
 import './HomePage.css';
 
@@ -18,8 +18,8 @@ export default function HomePage({
 }) {
 const navigate = useNavigate();
 
+
 useEffect (function() {
-  console.log(currentIndex, questions.length, user.highScore, score)
   if (currentIndex === questions.length && user.highScore < score ) {
     async function saveScore() {
         const scoreObject = {score:score}
@@ -43,11 +43,11 @@ return (
             </option>
           ))}
       </select>   
-      <button class="sbutton" onClick={handleQuestions}>Start Quiz</button>
+      <button className="sbutton" onClick={handleQuestions}>Start Quiz</button>
 
     </div>
     
-      {questions.length > 0 ? (
+    {questions.length > 0 ? (
      <div className="scoreContainer">
      {currentIndex >= questions.length ? (
        <>
@@ -63,9 +63,9 @@ return (
        />
      )}
     </div>
- ) : (
-   "."
- )}
-</>
+    ) : (
+    "."
+    )}
+  </>
 );
 }

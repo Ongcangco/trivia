@@ -1,12 +1,11 @@
 Trivia:
 <br>
--An interractive app that uses a Trivia API to allow users to take a quiz of various category.
-<br>
--Play to beat your high score!
+An interractive app that uses a Trivia API to allow users to take a quiz of various category. Here you are able to test your skill in many different categories and enjoy the competitiveness of others, as well as trying to beat your own given score. Users are able to play as many games as they want, and try to get the best possible score.
+
 
 
 Technology:<br>
--HTML, CSS, JS, React, Express, 
+-HTML, CSS, JS, React, Express, Node, MongoDB
 
 Visual:
 <br>
@@ -17,7 +16,8 @@ Visual:
 <img src="https://github.com/Ongcangco/trivia/assets/129900118/ec9f14ca-28da-4e82-9de2-60fefc807073" height="100">
 
 Getting Started:
-<!-- https://ongcangco.github.io/slotsmachine/ -->
+<!-- Input Heroku Link -->
+https://trello.com/b/gbdzCOiE/trivia
 -Play until you reach a new highscore and make the leaderboard!
 -Simple basic concepts. You are able to select whatever category you would like to test your knowledge on and see how you match up in rankings.
 
