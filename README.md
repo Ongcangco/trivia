@@ -21,7 +21,7 @@ Getting Started:
 -Play until you reach a new highscore and make the leaderboard!
 -Simple basic concepts. You are able to select whatever category you would like to test your knowledge on and see how you match up in rankings.
 
-Icebox Items:
+Icebox Items:<br>
 -Plenty of icebox features, wanted to have so much more in here.<br>
 -Would have loved to be able to customize the trivia a whole lot more. I wanted to have a difficulty setting and a number of questions setting.<br>
 -Wanted to be able to put a timer for each questions as well.<br>
